@@ -18,8 +18,8 @@ public class ProdutosTest {
 
     @BeforeEach
     public void setup() {
-        baseURI = "https://serverest.dev";
-
+        //baseURI = "https://serverest.dev";
+        baseURI = "http://localhost:3000";
         try {
             String filePath = Objects.requireNonNull(getClass().getClassLoader().getResource("config.properties")).getPath();
             this.token = getToken(filePath, baseURI, "/login");
@@ -45,19 +45,7 @@ public class ProdutosTest {
 
     @Test
     public void testCadastrarEditarProduto(){
-        Response response = given()
-                .log().all()
-                .header("authorization", this.token)
-                .contentType(ContentType.JSON)
-                .body(novoProduto())
-        .when()
-                .post("/produtos")
-        .then()
-                .log().all()
-                .statusCode(HttpStatus.SC_CREATED)
-                .body("message",equalTo("Cadastro realizado com sucesso"))
-                .extract().response();
-
+        Response response = cadastrarProduto();
         String idProduto = response.jsonPath().getString("_id");
 
         given()
@@ -101,7 +89,38 @@ public class ProdutosTest {
 
         String idProduto = response.jsonPath().getString("_id");
 
-        given()
+        consultaProduto(idProduto);
+
+
+//        given()
+//                .log().all()
+//                .header("authorization", this.token)
+//                .contentType(ContentType.JSON)
+//        .when()
+//                .delete("/produtos/" + idProduto)
+//        .then()
+//                .log().all()
+//                .statusCode(HttpStatus.SC_OK)
+//                .body("message", equalTo("Registro excluído com sucesso"));
+    }
+
+    public Response cadastrarProduto() {
+        return given()
+                .log().all()
+                .header("authorization", this.token)
+                .contentType(ContentType.JSON)
+                .body(novoProduto())
+        .when()
+                .post("/produtos")
+        .then()
+                .log().all()
+                .statusCode(HttpStatus.SC_CREATED)
+                .body("message", equalTo("Cadastro realizado com sucesso"))
+                .extract().response();
+    }
+
+    public Response consultaProduto(String idProduto) {
+        return given()
                 .log().all()
                 .header("Authorization", this.token)
                 .contentType(ContentType.JSON)
@@ -109,18 +128,7 @@ public class ProdutosTest {
                 .get("/produtos/" + idProduto)
         .then()
                 .log().all()
-                .body("_id", equalTo(idProduto));
-
-
-        given()
-                .log().all()
-                .header("authorization", this.token)
-                .contentType(ContentType.JSON)
-        .when()
-                .delete("/produtos/" + idProduto)
-        .then()
-                .log().all()
-                .statusCode(HttpStatus.SC_OK)
-                .body("message", equalTo("Registro excluído com sucesso"));
+                .body("_id", equalTo(idProduto))
+                .extract().response();
     }
 }

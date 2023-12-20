@@ -17,7 +17,9 @@ public class UsuariosTest {
 
     @BeforeEach
     public void setup() {
-        baseURI = "https://serverest.dev";
+        //baseURI = "https://serverest.dev";
+        baseURI = "http://localhost:3000";
+
 
         try {
             String filePath = Objects.requireNonNull(getClass().getClassLoader().getResource("config.properties")).getPath();
