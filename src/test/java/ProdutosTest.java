@@ -18,7 +18,6 @@ public class ProdutosTest {
 
     @BeforeEach
     public void setup() {
-        //baseURI = "https://serverest.dev";
         baseURI = "http://localhost:3000";
         try {
             String filePath = Objects.requireNonNull(getClass().getClassLoader().getResource("config.properties")).getPath();
@@ -44,36 +43,16 @@ public class ProdutosTest {
     }
 
     @Test
-    public void testCadastrarEditarProduto(){
+    public void testCadastrarProduto(){
         Response response = cadastrarProduto();
+
         String idProduto = response.jsonPath().getString("_id");
 
-        given()
-                .log().all()
-                .header("authorization", this.token)
-                .contentType(ContentType.JSON)
-                .body(novoProduto())
-        .when()
-                .put("/produtos/" + idProduto)
-        .then()
-                .log().all()
-                .statusCode(HttpStatus.SC_OK)
-                .body("message", equalTo("Registro alterado com sucesso"));
-
-        given()
-                .log().all()
-                .header("authorization", this.token)
-                .contentType(ContentType.JSON)
-        .when()
-                .delete("/produtos/" + idProduto)
-        .then()
-                .log().all()
-                .statusCode(HttpStatus.SC_OK)
-                .body("message", equalTo("Registro excluído com sucesso"));
+        deleteProduto(idProduto);
     }
 
     @Test
-    public void testeBuscarProdutoPorId(){
+    public void testeConsultarProdutoPorId(){
         Response response = given()
                 .log().all()
                 .header("authorization", this.token)
@@ -90,20 +69,31 @@ public class ProdutosTest {
         String idProduto = response.jsonPath().getString("_id");
 
         consultaProduto(idProduto);
+        deleteProduto(idProduto);
 
-
-//        given()
-//                .log().all()
-//                .header("authorization", this.token)
-//                .contentType(ContentType.JSON)
-//        .when()
-//                .delete("/produtos/" + idProduto)
-//        .then()
-//                .log().all()
-//                .statusCode(HttpStatus.SC_OK)
-//                .body("message", equalTo("Registro excluído com sucesso"));
     }
 
+    @Test
+    public void testEditarProduto(){
+        Response response = cadastrarProduto();
+        String idProduto = response.jsonPath().getString("_id");
+
+        given()
+                .log().all()
+                .header("authorization", this.token)
+                .contentType(ContentType.JSON)
+                .body(novoProduto())
+        .when()
+                .put("/produtos/" + idProduto)
+        .then()
+                .log().all()
+                .statusCode(HttpStatus.SC_OK)
+                .body("message", equalTo("Registro alterado com sucesso"));
+
+        deleteProduto(idProduto);
+    }
+
+    //====================Métodos auxiliares para evitar repetição de código na classe.======================================================
     public Response cadastrarProduto() {
         return given()
                 .log().all()
@@ -129,6 +119,20 @@ public class ProdutosTest {
         .then()
                 .log().all()
                 .body("_id", equalTo(idProduto))
+                .extract().response();
+    }
+
+    public Response deleteProduto(String idProduto){
+        return given()
+                .log().all()
+                .header("authorization", this.token)
+                .contentType(ContentType.JSON)
+       .when()
+                .delete("/produtos/" + idProduto)
+        .then()
+                .log().all()
+                .statusCode(HttpStatus.SC_OK)
+                .body("message", equalTo("Registro excluído com sucesso"))
                 .extract().response();
     }
 }

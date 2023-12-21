@@ -6,10 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="b9148f94-dd19-4c07-8799-ea78a125bf12" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dataFactory/ProdutoDataFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dataFactory/ProdutoDataFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ProdutosTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ProdutosTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/UsuariosTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UsuariosTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dataFactory/ProdutoDataFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dataFactory/ProdutoDataFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/CarrinhosTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/CarrinhosTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/ProdutosTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/ProdutosTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/UsuariosTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/UsuariosTest.class" afterDir="false" />
     </list>
@@ -61,52 +60,52 @@
       <command value="mvn clean install -U" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.CarrinhosTest.testBuscarCarrinhoPorId">
-    <configuration name="CarrinhosTest.testBuscarCarridnhoPorId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.ProdutosTest.testEditarProduto">
+    <configuration name="ProdutosTest.testCadastrarProduto" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Automation-Back-RestAssured" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="CarrinhosTest" />
-      <option name="METHOD_NAME" value="testBuscarCarridnhoPorId" />
+      <option name="MAIN_CLASS_NAME" value="ProdutosTest" />
+      <option name="METHOD_NAME" value="testCadastrarProduto" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CarrinhosTest.testBuscarCarrinhoPorId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProdutosTest.testEditarProduto" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Automation-Back-RestAssured" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="CarrinhosTest" />
-      <option name="METHOD_NAME" value="testBuscarCarrinhoPorId" />
+      <option name="MAIN_CLASS_NAME" value="ProdutosTest" />
+      <option name="METHOD_NAME" value="testEditarProduto" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CarrinhosTest.testCadastrarCarrinhoEBUscarCarrinhoPorId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProdutosTest.testListarProdutosCadastrados" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Automation-Back-RestAssured" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="CarrinhosTest" />
-      <option name="METHOD_NAME" value="testCadastrarCarrinhoEBUscarCarrinhoPorId" />
+      <option name="MAIN_CLASS_NAME" value="ProdutosTest" />
+      <option name="METHOD_NAME" value="testListarProdutosCadastrados" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CarrinhosTest.testCadastrarCarrinhoEBuscarCarrinhoPorId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ProdutosTest.testeConsultarProdutoPorId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Automation-Back-RestAssured" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="CarrinhosTest" />
-      <option name="METHOD_NAME" value="testCadastrarCarrinhoEBuscarCarrinhoPorId" />
+      <option name="MAIN_CLASS_NAME" value="ProdutosTest" />
+      <option name="METHOD_NAME" value="testeConsultarProdutoPorId" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CarrinhosTest.testListarCarrinhosCadastrados" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UsuariosTest.testeEditarUsuario" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Automation-Back-RestAssured" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="CarrinhosTest" />
-      <option name="METHOD_NAME" value="testListarCarrinhosCadastrados" />
+      <option name="MAIN_CLASS_NAME" value="UsuariosTest" />
+      <option name="METHOD_NAME" value="testeEditarUsuario" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -142,11 +141,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CarrinhosTest.testBuscarCarrinhoPorId" />
-        <item itemvalue="JUnit.CarrinhosTest.testBuscarCarridnhoPorId" />
-        <item itemvalue="JUnit.CarrinhosTest.testCadastrarCarrinhoEBuscarCarrinhoPorId" />
-        <item itemvalue="JUnit.CarrinhosTest.testCadastrarCarrinhoEBUscarCarrinhoPorId" />
-        <item itemvalue="JUnit.CarrinhosTest.testListarCarrinhosCadastrados" />
+        <item itemvalue="JUnit.ProdutosTest.testEditarProduto" />
+        <item itemvalue="JUnit.ProdutosTest.testeConsultarProdutoPorId" />
+        <item itemvalue="JUnit.ProdutosTest.testCadastrarProduto" />
+        <item itemvalue="JUnit.ProdutosTest.testListarProdutosCadastrados" />
+        <item itemvalue="JUnit.UsuariosTest.testeEditarUsuario" />
       </list>
     </recent_temporary>
   </component>
