@@ -3,13 +3,10 @@ import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.io.IOException;
 import java.util.Objects;
-
 import static dataFactory.ProdutoDataFactory.novoProduto;
-import static io.restassured.RestAssured.baseURI;
-import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.equalTo;
 import static util.TokenUtils.getToken;
 
@@ -32,7 +29,6 @@ public class ProdutosTest {
     public void testListarProdutosCadastrados(){
 
         given()
-                .log().all()
                 .header("authorization", this.token)
                 .contentType(ContentType.JSON)
         .when()
@@ -52,16 +48,59 @@ public class ProdutosTest {
     }
 
     @Test
-    public void testeConsultarProdutoPorId(){
-        Response response = given()
-                .log().all()
-                .header("authorization", this.token)
+    public void testCadastrarProdutoSemToken(){
+        given()
                 .contentType(ContentType.JSON)
                 .body(novoProduto())
         .when()
                 .post("/produtos")
         .then()
                 .log().all()
+                .statusCode(401)
+                .body("message",equalTo("Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"));
+    }
+
+    @Test
+    public void testCadastrarProdutoComNomeExistente(){
+            // Suponha que você tenha um método novoProduto() que retorna um objeto JSON com o novo produto
+            String novoProduto = "{"
+                    + "\"nome\": \"OnePlus 6T\","
+                    + "\"preco\": 277,"
+                    + "\"descricao\": \"net.datafaker.Faker@4a2d66e\","
+                    + "\"quantidade\": 4"
+                    + "}";
+
+            // Simulando o cenário onde o produto já existe
+
+            // Realiza a criação do produto original
+            given()
+                    .header("authorization", this.token)
+                    .contentType(ContentType.JSON)
+                    .body(novoProduto)
+                    .post("/produtos");
+
+            // Agora, tenta criar um novo produto com o mesmo nome
+            given()
+                    .log().all()
+                    .header("authorization", this.token)
+                    .contentType(ContentType.JSON)
+                    .body(novoProduto)
+                    .post("/produtos")
+                    .then()
+                    .statusCode(400) // Verifica se o status code é 400 (Bad Request)
+                    .body("message", equalTo("Já existe produto com esse nome")); // Verifica a mensagem de erro retornada
+
+    }
+
+    @Test
+    public void testeConsultarProdutoPorId(){
+        Response response = given()
+                .header("authorization", this.token)
+                .contentType(ContentType.JSON)
+                .body(novoProduto())
+        .when()
+                .post("/produtos")
+        .then()
                 .statusCode(HttpStatus.SC_CREATED)
                 .body("message",equalTo("Cadastro realizado com sucesso"))
                 .extract().response();
@@ -79,14 +118,12 @@ public class ProdutosTest {
         String idProduto = response.jsonPath().getString("_id");
 
         given()
-                .log().all()
                 .header("authorization", this.token)
                 .contentType(ContentType.JSON)
                 .body(novoProduto())
         .when()
                 .put("/produtos/" + idProduto)
         .then()
-                .log().all()
                 .statusCode(HttpStatus.SC_OK)
                 .body("message", equalTo("Registro alterado com sucesso"));
 
@@ -111,28 +148,25 @@ public class ProdutosTest {
 
     public Response consultaProduto(String idProduto) {
         return given()
-                .log().all()
                 .header("Authorization", this.token)
                 .contentType(ContentType.JSON)
         .when()
                 .get("/produtos/" + idProduto)
         .then()
-                .log().all()
                 .body("_id", equalTo(idProduto))
                 .extract().response();
     }
 
     public Response deleteProduto(String idProduto){
         return given()
-                .log().all()
                 .header("authorization", this.token)
                 .contentType(ContentType.JSON)
        .when()
                 .delete("/produtos/" + idProduto)
         .then()
-                .log().all()
                 .statusCode(HttpStatus.SC_OK)
                 .body("message", equalTo("Registro excluído com sucesso"))
                 .extract().response();
     }
 }
+

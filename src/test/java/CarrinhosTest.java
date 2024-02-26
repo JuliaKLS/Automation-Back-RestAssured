@@ -5,12 +5,10 @@ import model.Value;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-
 import static dataFactory.ProdutoDataFactory.novoProduto;
 import static dataFactory.ProdutoDataFactory.produtoExistente;
 import static io.restassured.RestAssured.baseURI;
@@ -38,20 +36,18 @@ public class CarrinhosTest {
     public void testListarCarrinhosCadastrados(){
 
         given()
-                .log().all()
                 .header("authorization", this.token)
                 .contentType(ContentType.JSON)
         .when()
                 .get("/carrinhos")
         .then()
-                .log().all()
                 .statusCode(HttpStatus.SC_OK);
     }
 
     @Test
     public void testCadastrarCarrinho(){
 
-        int qtdItensCarrinho = 3;
+        int qtdItensCarrinho = 4;
         List<ProdutoExistente> listaProdutos = new ArrayList<>();
 
         while (listaProdutos.size() < qtdItensCarrinho){
@@ -70,11 +66,11 @@ public class CarrinhosTest {
         value.setProdutos(listaProdutos);
 
         Response responseCarrinho = given()
-                .log().all()
                 .header("authorization", this.token)
                 .contentType(ContentType.JSON)
                 .body(value)
         .when()
+                .log().all()
                 .post("/carrinhos")
         .then()
                 .log().all()
@@ -85,10 +81,10 @@ public class CarrinhosTest {
         String idCarrinho = responseCarrinho.jsonPath().getString("_id");
 
         given()
-                .log().all()
                 .header("authorization", this.token)
                 .contentType(ContentType.JSON)
         .when()
+                .log().all()
                 .get("/carrinhos/" + idCarrinho)
         .then()
                 .log().all()
@@ -96,7 +92,6 @@ public class CarrinhosTest {
 
         excluirCarrinhoRetornarProdutoEstoque();
     }
-
 
     @Test
     public void testBuscarCarrinhoPorId(){
@@ -119,14 +114,12 @@ public class CarrinhosTest {
         value.setProdutos(listaProdutos);
 
         Response responseCarrinho = given()
-                .log().all()
                 .header("authorization", this.token)
                 .contentType(ContentType.JSON)
                 .body(value)
         .when()
                 .post("/carrinhos")
         .then()
-                .log().all()
                 .statusCode(HttpStatus.SC_CREATED)
                 .body("message", equalTo("Cadastro realizado com sucesso"))
                 .extract().response();
@@ -134,31 +127,25 @@ public class CarrinhosTest {
         String idCarrinho = responseCarrinho.jsonPath().getString("_id");
 
         given()
-                .log().all()
                 .header("authorization", this.token)
                 .contentType(ContentType.JSON)
         .when()
                 .get("/carrinhos/" + idCarrinho)
         .then()
-                .log().all()
                 .statusCode(HttpStatus.SC_OK);
 
         excluirCarrinho();
     }
 
-//=======================MétodosAuxiliares==========================================================
-
-
+    //====================Métodos auxiliares para evitar repetição de código na classe.======================================================
     public Response cadastrarProduto() {
         return given()
-                .log().all()
                 .header("authorization", this.token)
                 .contentType(ContentType.JSON)
                 .body(novoProduto())
         .when()
                 .post("/produtos")
         .then()
-                .log().all()
                 .statusCode(HttpStatus.SC_CREATED)
                 .body("message", equalTo("Cadastro realizado com sucesso"))
                 .extract().response();
@@ -166,26 +153,22 @@ public class CarrinhosTest {
 
     public Response consultaProduto(String idProduto) {
         return given()
-                .log().all()
                 .header("Authorization", this.token)
                 .contentType(ContentType.JSON)
         .when()
                 .get("/produtos/" + idProduto)
         .then()
-                .log().all()
                 .body("_id", equalTo(idProduto))
                 .extract().response();
     }
 
     public Response excluirCarrinho(){
         return given()
-                .log().all()
                 .header("authorization", this.token)
                 .contentType(ContentType.JSON)
         .when()
                 .delete("/carrinhos/concluir-compra" )
         .then()
-                .log().all()
                 .statusCode(HttpStatus.SC_OK)
                 .body("message",equalTo("Registro excluído com sucesso"))
                 .extract().response();
@@ -193,17 +176,13 @@ public class CarrinhosTest {
 
     public Response excluirCarrinhoRetornarProdutoEstoque(){
         return given()
-                .log().all()
                 .header("authorization", this.token)
                 .contentType(ContentType.JSON)
         .when()
                 .delete("/carrinhos/cancelar-compra" )
         .then()
-                .log().all()
                 .statusCode(HttpStatus.SC_OK)
                 .body("message",equalTo("Registro excluído com sucesso. Estoque dos produtos reabastecido"))
                 .extract().response();
     }
-
-
 }
