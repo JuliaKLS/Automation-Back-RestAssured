@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b9148f94-dd19-4c07-8799-ea78a125bf12" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dataFactory/UsuarioDataFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dataFactory/UsuarioDataFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/CarrinhosTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/CarrinhosTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ProdutosTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ProdutosTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/UsuariosTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UsuariosTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dataFactory/UsuarioDataFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dataFactory/UsuarioDataFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/ProdutosTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/ProdutosTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/UsuariosTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/UsuariosTest.class" afterDir="false" />
-    </list>
+    <list default="true" id="b9148f94-dd19-4c07-8799-ea78a125bf12" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -63,7 +53,7 @@
       <command value="mvn clean install -U" />
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.UsuariosTest">
+  <component name="RunManager" selected="JUnit.CarrinhosTest">
     <configuration name="CarrinhosTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Automation-Back-RestAssured" />
       <option name="PACKAGE_NAME" value="" />
@@ -141,9 +131,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.UsuariosTest" />
         <item itemvalue="JUnit.CarrinhosTest" />
         <item itemvalue="JUnit.ProdutosTest" />
+        <item itemvalue="JUnit.UsuariosTest" />
         <item itemvalue="JUnit.ProdutosTest.testListarProdutosCadastrados" />
         <item itemvalue="JUnit.UsuariosTest.testeCadastrarUsuarioAdmin" />
       </list>
