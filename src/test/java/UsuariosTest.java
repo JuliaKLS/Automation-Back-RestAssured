@@ -1,11 +1,13 @@
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import model.Usuario;
 import org.apache.http.HttpStatus;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import java.io.IOException;
 import java.util.Objects;
-import static dataFactory.UsuarioDataFactory.novoUsuario;
+
+import static dataFactory.UsuarioDataFactory.*;
 import static io.restassured.RestAssured.*;
 import static org.hamcrest.Matchers.equalTo;
 import static util.TokenUtils.getToken;
@@ -39,7 +41,7 @@ public class UsuariosTest {
     }
 
     @Test
-    public void testeCadastrarUsuario(){
+    public void testCadastrarUsuario(){
         Response responseCadastroUsuario = given()
                 .header("authorization", this.token)
                 .contentType(ContentType.JSON)
@@ -52,47 +54,12 @@ public class UsuariosTest {
                 .extract().response();
 
         String idUsuario = responseCadastroUsuario.jsonPath().getString("_id");
-        //buscarUsuario(idUsuario);
+        buscarUsuario(idUsuario);
         deleteUsuario(idUsuario);
     }
 
     @Test
-    public void testeValidarEmail(){
-        String email = "{"
-                + "\n\"nome\": \"Luna Linda\","
-                + "\n\"email\": \"lunalinda@email.com\","
-                + "\n\"password\": \"luninha123\","
-                + "\n\"administrador\": \"false\""
-                + "\n}";
-
-
-        given()
-                .log().all()
-                .header("authorization", this.token)
-                .contentType(ContentType.JSON)
-                .formParam(email)
-        .when()
-                .post("/usuarios")
-        .then()
-                .log().all()
-                .statusCode(HttpStatus.SC_CREATED)
-                .body("message", equalTo("Cadastro realizado com sucesso"));
-
-        given()
-                .header("authorization", this.token)
-                .contentType(ContentType.JSON)
-                .formParam(email)
-        .when()
-                .post("/usuarios")
-        .then()
-                .statusCode(HttpStatus.SC_BAD_REQUEST)
-                .body("message",equalTo("Este email já está sendo usado"));
-
-        deleteUsuario(email);
-    }
-
-    @Test
-    public void testeBuscarUsuarioPorId(){
+    public void testBuscarUsuarioPorId(){
         Response response = given()
                 .header("authorization", this.token)
                 .contentType(ContentType.JSON)
@@ -111,7 +78,7 @@ public class UsuariosTest {
     }
 
     @Test
-    public void testeEditarUsuario(){
+    public void testEditarUsuario(){
         Response response = given()
                 .header("authorization", this.token)
                 .contentType(ContentType.JSON)
@@ -136,6 +103,32 @@ public class UsuariosTest {
                 .body("message", equalTo("Registro alterado com sucesso"));
 
         deleteUsuario(idUsuario);
+    }
+
+    @Test
+    public void testValidarEmail(){
+        given()
+                .header("authorization", this.token)
+                .contentType(ContentType.JSON)
+                .body(usuarioMesmoEmail())
+        .when()
+                .post("/usuarios")
+        .then()
+                .statusCode(HttpStatus.SC_BAD_REQUEST)
+                .body("message",equalTo("Este email já está sendo usado"));
+    }
+
+    @Test
+    public void testBuscarUsuarioInexistente(){
+
+        given()
+                .header("Authorization", this.token)
+                .contentType(ContentType.JSON)
+         .when()
+                .get("/usuarios/" + "0123456789")
+         .then()
+                .body("message",equalTo("Usuário não encontrado"));
+
     }
 
 //====================Métodos auxiliares para evitar repetição de código na classe.======================================================

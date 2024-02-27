@@ -28,4 +28,14 @@ public class UsuarioDataFactory {
 
         return novoUsuario;
     }
+
+    public static Usuario usuarioMesmoEmail(){
+        Usuario usuarioMesmoEmail = new Usuario();
+        usuarioMesmoEmail.setNome("Luna Linda");
+        usuarioMesmoEmail.setEmail("lunalinda@email.com");
+        usuarioMesmoEmail.setPassword("luninha123");
+        usuarioMesmoEmail.setAdministrador("false");
+
+        return usuarioMesmoEmail;
+    }
 }

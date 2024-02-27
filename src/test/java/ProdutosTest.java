@@ -31,10 +31,8 @@ public class ProdutosTest {
         given()
                 .header("authorization", this.token)
                 .contentType(ContentType.JSON)
-        .when()
                 .get("/produtos")
         .then()
-                .log().all()
                 .statusCode(HttpStatus.SC_OK);
     }
 
@@ -52,53 +50,44 @@ public class ProdutosTest {
         given()
                 .contentType(ContentType.JSON)
                 .body(novoProduto())
-        .when()
                 .post("/produtos")
         .then()
-                .log().all()
                 .statusCode(401)
                 .body("message",equalTo("Token de acesso ausente, inválido, expirado ou usuário do token não existe mais"));
     }
 
     @Test
     public void testCadastrarProdutoComNomeExistente(){
-            // Suponha que você tenha um método novoProduto() que retorna um objeto JSON com o novo produto
             String novoProduto = "{"
-                    + "\"nome\": \"OnePlus 6T\","
+                    + "\"nome\": \"Panela de inox\","
                     + "\"preco\": 277,"
-                    + "\"descricao\": \"net.datafaker.Faker@4a2d66e\","
+                    + "\"descricao\": \"Muito Resistente\","
                     + "\"quantidade\": 4"
                     + "}";
 
-            // Simulando o cenário onde o produto já existe
-
-            // Realiza a criação do produto original
             given()
                     .header("authorization", this.token)
                     .contentType(ContentType.JSON)
                     .body(novoProduto)
                     .post("/produtos");
 
-            // Agora, tenta criar um novo produto com o mesmo nome
             given()
-                    .log().all()
                     .header("authorization", this.token)
                     .contentType(ContentType.JSON)
                     .body(novoProduto)
                     .post("/produtos")
-                    .then()
-                    .statusCode(400) // Verifica se o status code é 400 (Bad Request)
-                    .body("message", equalTo("Já existe produto com esse nome")); // Verifica a mensagem de erro retornada
+            .then()
+                    .statusCode(HttpStatus.SC_BAD_REQUEST)
+                    .body("message", equalTo("Já existe produto com esse nome"));
 
     }
 
     @Test
-    public void testeConsultarProdutoPorId(){
+    public void testConsultarProdutoPorId(){
         Response response = given()
                 .header("authorization", this.token)
                 .contentType(ContentType.JSON)
                 .body(novoProduto())
-        .when()
                 .post("/produtos")
         .then()
                 .statusCode(HttpStatus.SC_CREATED)
@@ -121,7 +110,6 @@ public class ProdutosTest {
                 .header("authorization", this.token)
                 .contentType(ContentType.JSON)
                 .body(novoProduto())
-        .when()
                 .put("/produtos/" + idProduto)
         .then()
                 .statusCode(HttpStatus.SC_OK)
@@ -133,14 +121,12 @@ public class ProdutosTest {
     //====================Métodos auxiliares para evitar repetição de código na classe.======================================================
     public Response cadastrarProduto() {
         return given()
-                .log().all()
                 .header("authorization", this.token)
                 .contentType(ContentType.JSON)
                 .body(novoProduto())
         .when()
                 .post("/produtos")
         .then()
-                .log().all()
                 .statusCode(HttpStatus.SC_CREATED)
                 .body("message", equalTo("Cadastro realizado com sucesso"))
                 .extract().response();

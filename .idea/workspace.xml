@@ -6,20 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="b9148f94-dd19-4c07-8799-ea78a125bf12" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dataFactory/CarrinhoDataFactory.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dataFactory/ProdutoDataFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dataFactory/ProdutoDataFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dataFactory/UsuarioDataFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dataFactory/UsuarioDataFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/model/ProdutoExistente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/ProdutoExistente.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/TokenUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/TokenUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/CarrinhosTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/CarrinhosTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/ProdutosTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ProdutosTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/UsuariosTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/UsuariosTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dataFactory/CarrinhoDataFactory.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/dataFactory/ProdutoDataFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dataFactory/ProdutoDataFactory.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/dataFactory/UsuarioDataFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/dataFactory/UsuarioDataFactory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/model/ProdutoExistente.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/model/ProdutoExistente.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/util/TokenUtils.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/util/TokenUtils.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/CarrinhosTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/CarrinhosTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/ProdutosTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/ProdutosTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/test-classes/UsuariosTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/UsuariosTest.class" afterDir="false" />
     </list>
@@ -90,6 +82,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ProdutosTest.testListarProdutosCadastrados" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Automation-Back-RestAssured" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="ProdutosTest" />
+      <option name="METHOD_NAME" value="testListarProdutosCadastrados" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="UsuariosTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Automation-Back-RestAssured" />
       <option name="PACKAGE_NAME" value="" />
@@ -99,21 +101,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UsuariosTest.testeCadastrarUsuario" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UsuariosTest.testeCadastrarUsuarioAdmin" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Automation-Back-RestAssured" />
       <option name="PACKAGE_NAME" value="" />
       <option name="MAIN_CLASS_NAME" value="UsuariosTest" />
-      <option name="METHOD_NAME" value="testeCadastrarUsuario" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="UsuariosTest.testeValidarEmail" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Automation-Back-RestAssured" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="UsuariosTest" />
-      <option name="METHOD_NAME" value="testeValidarEmail" />
+      <option name="METHOD_NAME" value="testeCadastrarUsuarioAdmin" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -150,10 +142,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.UsuariosTest" />
-        <item itemvalue="JUnit.ProdutosTest" />
         <item itemvalue="JUnit.CarrinhosTest" />
-        <item itemvalue="JUnit.UsuariosTest.testeValidarEmail" />
-        <item itemvalue="JUnit.UsuariosTest.testeCadastrarUsuario" />
+        <item itemvalue="JUnit.ProdutosTest" />
+        <item itemvalue="JUnit.ProdutosTest.testListarProdutosCadastrados" />
+        <item itemvalue="JUnit.UsuariosTest.testeCadastrarUsuarioAdmin" />
       </list>
     </recent_temporary>
   </component>
@@ -183,5 +175,8 @@
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Automation_Back_RestAssured$CarrinhosTest.ic" NAME="CarrinhosTest Coverage Results" MODIFIED="1709040885022" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

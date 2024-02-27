@@ -70,10 +70,8 @@ public class CarrinhosTest {
                 .contentType(ContentType.JSON)
                 .body(value)
         .when()
-                .log().all()
                 .post("/carrinhos")
         .then()
-                .log().all()
                 .statusCode(HttpStatus.SC_CREATED)
                 .body("message", equalTo("Cadastro realizado com sucesso"))
                 .extract().response();
@@ -84,10 +82,8 @@ public class CarrinhosTest {
                 .header("authorization", this.token)
                 .contentType(ContentType.JSON)
         .when()
-                .log().all()
                 .get("/carrinhos/" + idCarrinho)
         .then()
-                .log().all()
                 .statusCode(HttpStatus.SC_OK);
 
         excluirCarrinhoRetornarProdutoEstoque();
