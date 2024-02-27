@@ -1,4 +1,4 @@
-# Automatização de API com RestAssured
+# Testes automatizados de API com RestAssured
 
 [![Badge ServeRest](https://img.shields.io/badge/API-ServeRest-green)](https://github.com/ServeRest/ServeRest/)
 
