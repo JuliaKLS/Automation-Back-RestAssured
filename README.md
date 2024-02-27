@@ -2,7 +2,7 @@
 
 [![Badge ServeRest](https://img.shields.io/badge/API-ServeRest-green)](https://github.com/ServeRest/ServeRest/)
 
-O objetivo deste projeto é automatizar uma API pública (serverest.dev) utilizando o framework RestAssured.
+O objetivo deste projeto é automatizar uma API pública (serverest.dev) através do framework RestAssured.
 Nele usei o Java 17, IntelliJ IDEA e as seguintes dependências:
 
 - io.rest-assured
@@ -39,4 +39,4 @@ Ao final de cada classe de teste, estão incluídos "métodos auxiliares". Estes
 
 ## Ambiente
 
-Desenvolvi meus testes de carga localmente através do DOcker. 
+Desenvolvi meus testes de carga localmente através do Docker. 
