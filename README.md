@@ -16,7 +16,7 @@ Nele utilizei a linguagem de programação Java na versão 17, como IDE o Intell
 
 ## Configuração do Login
 
-Em todas as classes de teste, dentro do método `Setup`, está configurado o login da seguinte forma:
+Em todas as classes de testes, dentro do método `setup`, está configurado o login da seguinte forma:
 
 @BeforeEach
 public void setup() {
